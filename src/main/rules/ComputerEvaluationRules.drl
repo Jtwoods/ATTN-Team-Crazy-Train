@@ -1,0 +1,74 @@
+package JamesWoods.evaluator.pkg
+
+import JamesWoods.evaluator.pkg.Computer
+
+rule "It is loud"
+
+	no-loop
+	when
+		c : Computer( "none" != graphicsCard 
+		&& cpuSpeed > 3 || memory > 16 )
+	then
+		c.addDescription("is loud");
+end
+
+rule "it is cheap"
+
+    no-loop
+    when
+        c : Computer( price < 1000.00 )
+    then
+        c.addDescription("is cheap");
+end
+
+rule "it is expensive"
+
+    no-loop
+    when
+    	c : Computer( price > 4000.00 )
+    then
+     	c.addDescription("is expensive");
+end
+
+rule "it is hot"
+
+	no-loop
+	when
+		c : Computer( cpuSpeed > 4 || memory > 8 )
+	then
+	 	c.addDescription("is hot");
+	 	
+	 	
+end   
+
+rule "it can game"
+
+	no-loop
+	when
+		c : Computer( graphicsCard == "premium" 
+		|| graphicsCard != "none" && cpuSpeed > 2 ) 
+	then
+		c.addDescription("can game");
+end
+
+rule "it can crunch numbers"
+
+    no-loop
+    when
+    	c : Computer( cpuSpeed > 4 && memory > 4
+     	|| graphicsCard == "premium" )
+    then
+     	c.addDescription("can crunch numbers");
+     	
+end
+
+rule "it is risky"
+
+    no-loop
+    when
+     	c : Computer( (cpuSpeed > 4 || memory > 8) && price < 1000.00 ) 
+    then
+     	c.addDescription("is risky");
+end
+
+

@@ -1,0 +1,30 @@
+package JamesWoods.evaluator.pkg
+
+import JamesWoods.evaluator.pkg.Computer
+
+rule "safe gaming option"
+	no-loop
+	when
+		c : Computer( c.descriptionContains("can game") &&
+	    c.descriptionContains("is risky") != true )
+	then
+		System.out.println(c.toString() + "This is a safe gaming computer.\n");
+end 
+
+rule "risky number crunchers"
+	no-loop
+	when
+		c : Computer( c.descriptionContains("can crunch numbers") &&
+		c.descriptionContains("is risky") )
+	then
+		System.out.println(c.toString() + "This is a risky number cruncher.\n");
+end
+
+rule "cool gamers"
+    no-loop
+    when
+    	c : Computer( c.descriptionContains("can game") &&
+    	c.descriptionContains("is hot") != true )
+    then
+    	System.out.println(c.toString() + "Here is a cool gaming computer.\n");
+end
